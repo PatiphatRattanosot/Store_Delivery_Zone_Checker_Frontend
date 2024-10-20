@@ -22,7 +22,7 @@ export const StoreProvider = ({ children }) => {
 
     const getStoreById = async (id) => {
         try {
-            const response = await StoreService.getStore(id);
+            const response = await StoreService.getStoreById(id);
             if (response.status === 200) {
                 return response.data;
             }
@@ -31,7 +31,7 @@ export const StoreProvider = ({ children }) => {
         }
     };
 
-    const addStore = async (id, newStore) => {
+    const addStore = async (newStore) => {
         try {
             const response = await StoreService.createStore(newStore);
             if (response.status === 200) {

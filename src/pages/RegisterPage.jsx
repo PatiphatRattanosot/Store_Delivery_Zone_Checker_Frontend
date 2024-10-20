@@ -3,6 +3,8 @@ import AuthService from "../services/auth.service";
 import Swal from "sweetalert2";
 import AddressForm from "../components/AddressForm";
 import GetLocation from "../components/GetLocation";
+import RadioGroup from "../components/RadioGroup";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
     const [selectedOption, setSelectedOption] = useState("option1");
@@ -14,6 +16,9 @@ function RegisterPage() {
         lat: null,
         long: null,
     });
+
+    const navigate = useNavigate();
+
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -41,7 +46,7 @@ function RegisterPage() {
             ...user,
             lat,
             long,
-            address, 
+            address,
         });
     };
 
@@ -63,8 +68,9 @@ function RegisterPage() {
                     showConfirmButton: false,
                     timer: 1500,
                 });
+                navigate("/login");
             } else {
-                Swal.fire({
+                Swal.fire({ 
                     icon: "error",
                     title: "Register failed",
                     text: response.data.message || response.message,
@@ -121,31 +127,8 @@ function RegisterPage() {
                     />
                 </label>
 
-                {/* Radio buttons for selecting options */}
-                <div className="form-control flex flex-row">
-                    <label className="label cursor-pointer">
-                        <span className="label-text">ที่อยู่ปัจจุบัน</span>
-                        <input
-                            type="radio"
-                            name="radio"
-                            className="radio"
-                            value="option1"
-                            checked={selectedOption === "option1"}
-                            onChange={handleOptionChange}
-                        />
-                    </label>
-                    <label className="label cursor-pointer">
-                        <span className="label-text">ค้นหาพิกัด</span>
-                        <input
-                            type="radio"
-                            name="radio"
-                            className="radio"
-                            value="option2"
-                            checked={selectedOption === "option2"}
-                            onChange={handleOptionChange}
-                        />
-                    </label>
-                </div>
+                {/* ใช้งาน RadioGroup Component */}
+                <RadioGroup selectedOption={selectedOption} handleOptionChange={handleOptionChange} />
 
                 {selectedOption === "option1" ? (
                     <div>

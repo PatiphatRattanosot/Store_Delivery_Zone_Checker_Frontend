@@ -3,7 +3,9 @@ import Layout from "../components/Layout";
 import App from "../App";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import AddressForm from "../components/AddressForm";
+import StoreList from "../pages/StoreList";
+import AddStorePage from "../pages/AddStorePage";
+import EditStore from "../pages/EditStore";
 
 const router = createBrowserRouter([
     {
@@ -20,8 +22,14 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <RegisterPage />,
             }, {
-                path: "/address",
-                element: <AddressForm />,
+                path: "/store/add",
+                element: <AddStorePage />,
+            }, {
+                path: "/store/list",
+                element: <StoreList />,
+            }, {
+                path: "/store/edit/:id",
+                element: <EditStore />,
             }
         ],
     },

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from "react-router-dom";
 import { AuthProvider } from '../context/AuthContext';
-import { StoreProvider } from '../context/StoreControllre';
+import { StoreProvider } from '../context/StoreContext';
 import Navbar from './Navbar';
 
 function Layout() {
@@ -9,7 +9,7 @@ function Layout() {
         <div>
             <AuthProvider>
                 <StoreProvider>
-                    <div>
+                    <div className='space-y-4'>
                         <Navbar />
                         <Outlet />
                     </div>

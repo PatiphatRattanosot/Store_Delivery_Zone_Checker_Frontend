@@ -10,11 +10,12 @@ const getStoreById = async (id) => {
     return await api.get(`${API_URL}/${id}`);
 }
 
-const createStore = async (storeName, address, lat, long, daliveryRadius, userId) => {
-    return await api.post(`${API_URL}`, { storeName, address, lat, long, daliveryRadius, userId });
+const createStore = async (store) => {
+    return await api.post(`${API_URL}/`, store);
 }
 
-const updateStore = async (newStore, id) => {
+const updateStore = async (id, newStore) => {
+
     return await api.put(`${API_URL}/${id}`, newStore);
 }
 

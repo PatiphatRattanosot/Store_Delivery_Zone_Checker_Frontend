@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
-
+import { useNavigate } from 'react-router-dom';
 function LoginPage() {
     const { login } = useAuthContext();
     const [userLogin, setUserLogin] = useState({
         username: "",
         password: "",
     });
+
+    const navigate = useNavigate();
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -21,23 +24,8 @@ function LoginPage() {
         try {
             console.log("Log from LoginPage", userLogin);
 
-            const response = await login(userLogin.username, userLogin.password);
-            if (response.status === 200) {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Login successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-                window.location.href = "/";
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Login failed",
-                    text: response.data.message,
-                });
-            }
+            await login(userLogin.username, userLogin.password);
+            navigate("/");
         } catch (error) {
             console.log("Login failed");
 
