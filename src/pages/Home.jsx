@@ -15,7 +15,7 @@ function Home() {
 
             <main className="flex-1 flex items-center justify-center bg-gray-100 p-6">
                 {user ? (
-                    <div className="w-full h-96 rounded-lg shadow-lg overflow-hidden">
+                    <div className="w-full rounded-lg shadow-lg overflow-hidden z-0">
                         <Map />
                     </div>
                 ) : (
