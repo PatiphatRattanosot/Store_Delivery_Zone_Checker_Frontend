@@ -21,7 +21,7 @@ function Navbar() {
     return (
         <div className="navbar bg-base-100  shadow-lg z-50 sticky top-0">
             <div className="navbar-start">
-                <a href='#' className="btn btn-ghost normal-case text-xl">Delivery Pls</a>
+                <a href='/' className="btn btn-ghost normal-case text-xl">Delivery Pls</a>
 
                 {/* Dropdown สำหรับมือถือ */}
                 <div className="dropdown lg:hidden">
