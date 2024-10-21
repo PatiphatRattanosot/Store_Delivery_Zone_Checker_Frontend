@@ -25,10 +25,11 @@ function GetLocation({ onLocationSelect }) {
                     placeholder="เช่น 123 Main St, Bangkok, Thailand"
                     value={address}
                     onChange={handleAddressChange}
+                    required
                 />
             </label>
             <button className="btn btn-accent w-full" type="button" onClick={handleGetLocation}>
-                ดึงที่อยู่จาก Google Map
+                ดึงที่อยู่จากบราวเซอร์
             </button>
         </div>
     );

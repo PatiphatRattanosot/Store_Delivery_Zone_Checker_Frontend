@@ -12,12 +12,14 @@ const userIcon = L.icon({
 });
 
 const UserMarker = ({ user }) => {
+    console.log(user);
+
     return (
         <Marker position={[user.lat, user.long]} icon={userIcon}>
             <Popup>
                 <strong>Home</strong> <br />
-                Name: {user.username} <br />
-                Email: {user.email} <br />
+                Name: {user.username || ""} <br />
+                Email: {user.email || ""} <br />
                 Address: {user.address}
             </Popup>
         </Marker>

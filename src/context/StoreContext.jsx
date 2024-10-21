@@ -81,17 +81,25 @@ export const StoreProvider = ({ children }) => {
 
     const deleteStore = async (id) => {
         try {
-            const response = await StoreService.deleteStore(id);
-            if (response.status === 200) {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Store deleted successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                });
-                setSwap(!swap)
-            }
+            const response = async () => { await StoreService.deleteStore(id); setSwap(!swap) }
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    response();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
+            });
         } catch (error) {
             console.log(error || "Delete store failed");
 

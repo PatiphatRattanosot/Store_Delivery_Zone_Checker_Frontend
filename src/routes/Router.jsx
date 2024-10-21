@@ -6,6 +6,9 @@ import RegisterPage from "../pages/RegisterPage";
 import StoreList from "../pages/StoreList";
 import AddStorePage from "../pages/AddStorePage";
 import EditStore from "../pages/EditStore";
+import AdminOnly from "../pages/Admin";
+import NotAllowed from "../pages/NotAllowed";
+
 
 const router = createBrowserRouter([
     {
@@ -23,13 +26,16 @@ const router = createBrowserRouter([
                 element: <RegisterPage />,
             }, {
                 path: "/store/add",
-                element: <AddStorePage />,
+                element: <AdminOnly><AddStorePage /></AdminOnly>,
             }, {
                 path: "/store/list",
-                element: <StoreList />,
+                element: <AdminOnly><StoreList /></AdminOnly>,
             }, {
                 path: "/store/edit/:id",
-                element: <EditStore />,
+                element: <AdminOnly><EditStore /></AdminOnly>,
+            }, {
+                path: "/notallow",
+                element: <NotAllowed />,
             }
         ],
     },

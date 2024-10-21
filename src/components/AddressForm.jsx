@@ -51,6 +51,7 @@ function AddressForm({ onCoordinatesSelect }) {
                     placeholder="เช่น 123 Main St, Bangkok, Thailand"
                     value={address}
                     onChange={handleAddressChange}
+                    required
                 />
             </label>
             <button className="btn btn-accent w-full" type="button" onClick={handleGeocode}>

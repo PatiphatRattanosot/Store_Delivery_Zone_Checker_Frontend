@@ -39,8 +39,16 @@ function AddStorePage() {
 
     const handleAddStore = async () => {
         try {
-            console.log(stores);
-
+            if (!stores.storeName || !stores.address || !stores.lat || !stores.long || !stores.deliveryRadius) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด',
+                    text: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                return;
+            }
             await addStore(stores);
             setStores({
                 storeName: "",
