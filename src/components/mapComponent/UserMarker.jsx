@@ -12,7 +12,6 @@ const userIcon = L.icon({
 });
 
 const UserMarker = ({ user }) => {
-    console.log(user);
 
     return (
         <Marker position={[user.lat, user.long]} icon={userIcon}>

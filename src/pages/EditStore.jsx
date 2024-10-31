@@ -25,12 +25,12 @@ function EditStore() {
         } catch (error) {
             console.error('Error fetching store data:', error);
         }
-    }, [id, getStoreById]);
+    }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setStoreData((prevData) => ({
-            ...prevData,
+        setStoreData((storeData) => ({
+            ...storeData,
             [name]: value,
         }));
     };
@@ -97,7 +97,7 @@ function EditStore() {
                         <label className="block mb-1">Delivery Radius (m)</label>
                         <input
                             type="number"
-                            name="deliveryRadius"
+                            name="daliveryRadius"
                             value={storeData.daliveryRadius}
                             onChange={handleChange}
                             className="input input-bordered w-full"
