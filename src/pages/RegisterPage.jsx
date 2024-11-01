@@ -52,7 +52,6 @@ function RegisterPage() {
 
     const handleSubmit = async () => {
         try {
-            console.log(user);
             const response = await AuthService.register(
                 user.username,
                 user.email,
@@ -70,7 +69,7 @@ function RegisterPage() {
                 });
                 navigate("/login");
             } else {
-                Swal.fire({ 
+                Swal.fire({
                     icon: "error",
                     title: "Register failed",
                     text: response.data.message || response.message,
@@ -79,7 +78,14 @@ function RegisterPage() {
                 });
             }
         } catch (error) {
-            console.log("Register failed");
+            console.log(error.response.data.message);
+            Swal.fire({
+                icon: "error",
+                title: "Register failed",
+                text: error.response.data.message || response.message,
+                showConfirmButton: false,
+                timer: 1500,
+            });
         }
     };
 
