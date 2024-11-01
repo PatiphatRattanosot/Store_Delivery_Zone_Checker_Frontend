@@ -32,7 +32,14 @@ function AddressForm({ onCoordinatesSelect }) {
                 onCoordinatesSelect(location.lat, location.lng, address);
 
             } else {
-                console.log("ผิดพลาดการค้นหาพิกัด");
+                console.log(response.data.error_message);
+                Swal.fire({
+                    icon: "error",
+                    title: "ค้นหาพิกัดไม่สำเร็จ",
+                    text: response?.data?.error_message || "กรุณากรอกที่อยู่ให้ถูกต้อง",
+                    showConfirmButton: false,
+                    timer: 1500,
+                })
 
             }
         } catch (error) {
